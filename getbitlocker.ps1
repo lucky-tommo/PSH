@@ -1,1 +1,0 @@
-Get-ADObject -Filter {ObjectClass -eq 'msFVE-RecoveryInformation'} -Properties msFVE-RecoveryPassword | Select-Object DistinguishedName, @{Name="RecoveryPassword"; Expression={[System.Text.Encoding]::UTF8.GetString($_.'msFVE-RecoveryPassword')}} | Where-Object {$_.DistinguishedName -like "*CN=<ComputerName>*"}
