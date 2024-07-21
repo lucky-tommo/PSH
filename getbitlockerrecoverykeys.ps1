@@ -2,6 +2,9 @@
 #Check for presence of Bitlocker Recovery information
 #and Grab the plain text Bitlocker Recovery password. 
 #Outputs to CSV on Desktop. 
+
+#This script has been lab tested on DC - Windows server 2019, and Windows 10 Workstations only. YMMV. 
+#Has not been tested against Entra ID or Hybrid Environments
  
 
 $Results=@()
@@ -18,9 +21,11 @@ Foreach($machine in $computers)
     
     Write-Host "Computer: "$machine.DNSHostName " -> AD Key Count:" $Bitlocker_Object.'msFVE-RecoveryPassword'.Count " -> Bitlocker Recovery Keys:" $Bitlocker_Object.'msFVE-RecoveryPassword'""
     $Results += $machine.DNSHostname + "," + $Bitlocker_Object.'msFVE-RecoveryPassword'}
+    
+    
     #If multiple keys are present in your environment - use the below to get Key ID
     #Write-Host "Computer: "$machine.DNSHostName " -> Bitlocker Key ID:" $Bitlocker_Object.'msFVE-RecoveryGUID'" --> Bitlocker Recovery Keys:" $Bitlocker_Object.'msFVE-RecoveryPassword'""
-
+    #$Results += $machine.DNSHostname + "," + $Bitlocker_Object.'msFVE-RecoveryPassword' + "," + $bitlocker_Object.'msFVE-RecoveryGUID'
 
 #Output to CSV
 $DesktopPath = [Environment]::GetFolderPath("Desktop")
