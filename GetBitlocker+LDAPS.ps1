@@ -1,3 +1,13 @@
+#----PSH Script to grab all Plain text LAPS managed Local Admin Acocunts and Bitlocker recover keys----
+#---Outputs to Console
+#---Outputs CSV to Desktop
+#---Run As Domain Admin (needs to be able to decrypt LAPS passwords)
+#---Run on Domain Controller
+
+
+#---This script has been tested on: DC - Windows Server 2019, Workstations: 2x Windows 10 only. YMMV.
+#---Has not been tested against Entra ID or Hybrid Environments. 
+
 $Results=@()
 $Results += "Hostname" + "," + "Bitlocker Password" + "," + "Local Admin Account" + "," + "Local Admin Password"
 $computers = Get-ADComputer -Filter * -Property *
