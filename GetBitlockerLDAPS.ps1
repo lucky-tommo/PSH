@@ -20,7 +20,7 @@ Foreach($machine in $computers)
     
     $Properties = @{'HostName'=$machine.Name;  'BitLockerInfo'=$Bitlocker_Object}
     
-    
+    #Moved to $machine.Name to get just hostname for easier queries in NGSIEM lookup file - if you need FQDN - use $machine.DnsHostName
     Write-Host "Computer: "$machine.Name " -> AD Key Count:" $Bitlocker_Object.'msFVE-RecoveryPassword'.Count " -> Bitlocker Recovery Keys:" $Bitlocker_Object.'msFVE-RecoveryPassword'" -> Local Admin Account:" $laps_creds.Account" -> Local Admin Password:" $laps_creds.Password""
     $Results += $machine.Name + "," + $Bitlocker_Object.'msFVE-RecoveryPassword' + "," + $laps_creds.Account + "," + $laps_creds.Password }
     #If multiple keys are present in your environment - use the below to get Key ID
