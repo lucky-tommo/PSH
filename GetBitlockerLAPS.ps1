@@ -29,6 +29,6 @@ Foreach($machine in $computers)
 
 #Output to CSV
 $DesktopPath = [Environment]::GetFolderPath("Desktop")
-$DesktopPath = $DesktopPath.toString() + "\BitlockerPasswords.csv"
+$DesktopPath = $DesktopPath.toString() + "\BitlockerLAPSPasswords.csv"
 
 write-output $Results > $DesktopPath
