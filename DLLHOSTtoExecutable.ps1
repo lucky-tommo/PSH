@@ -88,7 +88,7 @@ function Get-DllHostDetails {
         $output | Format-Table -AutoSize
 
         # Save the output to a CSV file
-        $csvPath = "C:\Users\Public\DllhostDetails.csv"
+        $csvPath = "C:\Temp\DllhostDetails.csv"
         $output | Export-Csv -Path $csvPath -NoTypeInformation
         Write-Output "Output saved to $csvPath"
     } else {
